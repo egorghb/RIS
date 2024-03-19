@@ -11,7 +11,7 @@ public:
 
 // Последовательные функции
 template <typename T>
-int col_max(const std::vector<std::vector<T> >& matrix, int col, int n) {
+int col_max(const std::vector<std::vector<T>>& matrix, int col, int n) {
     T max = std::abs(matrix[col][col]);
     int maxPos = col;
     for (int i = col + 1; i < n; ++i) {
@@ -25,7 +25,7 @@ int col_max(const std::vector<std::vector<T> >& matrix, int col, int n) {
 }
 
 template <typename T>
-int triangulation(std::vector<std::vector<T> >& matrix, int n) {
+int triangulation(std::vector<std::vector<T>>& matrix, int n) {
     unsigned int swapCount = 0;
     if (0 == n)
         return swapCount;
@@ -48,7 +48,7 @@ int triangulation(std::vector<std::vector<T> >& matrix, int n) {
 
 // Параллельные функции
 template <typename T>
-int col_max_parallel(const std::vector<std::vector<T> >& matrix, int col, int n) {
+int col_max_parallel(const std::vector<std::vector<T>>& matrix, int col, int n) {
     T max = std::abs(matrix[col][col]);
     int maxPos = col;
 #pragma omp parallel
@@ -75,7 +75,7 @@ int col_max_parallel(const std::vector<std::vector<T> >& matrix, int col, int n)
 }
 
 template <typename T>
-int triangulation_parallel(std::vector<std::vector<T> >& matrix, int n) {
+int triangulation_parallel(std::vector<std::vector<T>>& matrix, int n) {
     unsigned int swapCount = 0;
     if (0 == n)
         return swapCount;
@@ -99,7 +99,7 @@ int triangulation_parallel(std::vector<std::vector<T> >& matrix, int n) {
 
 // Решение
 template <typename T>
-std::vector<T> gauss_solving(std::vector<std::vector<T> >& matrix,
+std::vector<T> gauss_solving(std::vector<std::vector<T>>& matrix,
     std::vector<T>& free_term_column, int n) {
     std::vector<T> solution(n);
     for (int i = 0; i < n; ++i) {
@@ -120,7 +120,7 @@ std::vector<T> gauss_solving(std::vector<std::vector<T> >& matrix,
 
 int main() {
     for (int n = 500; n <= 3000; n += 500) {
-        std::vector<std::vector<double> > matrix(n);
+        std::vector<std::vector<double>> matrix(n);
         for (int i = 0; i < n; ++i) {
             matrix[i].resize(n);
             for (int j = 0; j < n; ++j)
